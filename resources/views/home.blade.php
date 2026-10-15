@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blade Directive</title>
+    <title>Blade Directive & Form</title>
 </head>
 
 <body>
@@ -15,26 +15,7 @@
 
     <hr>
 
-    <!-- 2. Perulangan Foreach -->
-    <h3>Daftar Pengguna:</h3>
-    @foreach ($users as $user)
-    <p>Ini adalah pengguna {{ $user->id }} - Nama: {{ $user->name }}</p>
-    @endforeach
-
-    <hr>
-
-    <!-- 3. Kondisi (If-Else) -->
-    <h3>Status Rekaman:</h3>
-    @if (count($records) === 1)
-    <p>Saya punya satu rekaman!</p>
-    @elseif (count($records) > 1)
-    <p>Saya punya banyak rekor!</p>
-    @else
-    <p>Saya tidak punya catatan apa apa!</p>
-    @endif
-
-    <!-- Contoh Code Comment Blade (Komentar ini tidak akan tampil di HTML browser) -->
-    {{-- Ini adalah komentar menggunakan Blade Directive --}}
+    <!-- Form Pertanyaan -->
     <h5 class="card-title">Form Pertanyaan</h5>
     <form action="{{ route('question.store') }}" method="POST">
         @csrf
@@ -52,6 +33,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
     </form>
+
 </body>
 
 </html>
