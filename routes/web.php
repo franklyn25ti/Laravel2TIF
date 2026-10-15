@@ -1,11 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuestionController;
+
+Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
 
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');
