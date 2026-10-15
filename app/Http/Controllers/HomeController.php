@@ -11,19 +11,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = [
-            'username' => 'Heroku',
-            'last_login' => date('Y-m-d H:i:s'),
-            // Data tambahan untuk simulasi perulangan dan kondisi Blade Directive
-            'users' => [
-                (object)['id' => 1, 'name' => 'Budi'],
-                (object)['id' => 2, 'name' => 'Ani'],
-                (object)['id' => 3, 'name' => 'Siti'],
-            ],
-            'records' => [1] // Digunakan untuk uji kondisi if-else
-        ];
-
-        return view('home', $data);
+        return view('home');
     }
 
     /**
