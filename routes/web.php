@@ -1,4 +1,3 @@
-```php
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -6,36 +5,25 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 
-// Proses pengiriman form pertanyaan
-Route::get('/home', function () {
+// 1. Route Halaman Utama & Form Pertanyaan
+Route::get('/', function () {
     return view('home');
-});
+})->name('question.create');
 
+// 2. Route Simpan Form (POST)
 Route::post('/question/store', [QuestionController::class, 'store'])
     ->name('question.store');
 
-// Halaman respon setelah form dikirim
-Route::get('/question/response', function () {
-    $data = session('data');
+// 3. Route Halaman Respon (GET)
+Route::get('/question/respon', [QuestionController::class, 'respon'])
+    ->name('question.respon');
 
-    if (!$data) {
-        return redirect('/');
-    }
-
-    return view('home-question-respon', $data);
-})->name('question.response');
-
-// Halaman posts
+// 4. Route Posts
 Route::get('/posts/create', [PostController::class, 'create'])
     ->name('posts.create');
 
 Route::post('/posts', [PostController::class, 'store'])
     ->name('posts.store');
 
-// Halaman home
+// 5. Route Home tambahan
 Route::get('/home', [HomeController::class, 'index']);
-
-// Halaman utama menampilkan form yang ada di welcome.blade.php
-Route::get('/', function () {
-    return view('welcome');
-});

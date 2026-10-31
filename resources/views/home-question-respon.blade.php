@@ -39,7 +39,7 @@
             </p>
 
             <!-- Tombol Kembali -->
-            <a href="/" class="btn btn-primary px-4">Kembali ke Beranda</a>
+            <a href="{{ route('question.create') }}" class="btn btn-primary px-4">Kembali ke Beranda</a>
         </div>
     </div>
 

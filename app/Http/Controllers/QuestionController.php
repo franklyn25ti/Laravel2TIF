@@ -28,7 +28,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation Rule & Custom Messages sesuai instruksi
+        // 1. Validasi Data
         $request->validate([
             'nama'       => 'required|min:5',
             'email'      => ['required', 'email'],
@@ -39,12 +39,27 @@ class QuestionController extends Controller
             'pertanyaan.required' => 'Pertanyaan tidak boleh kosong',
         ]);
 
-        // Mengambil data setelah lolos validasi
-        $data['nama']       = $request->nama;
-        $data['email']      = $request->email;
-        $data['pertanyaan'] = $request->pertanyaan;
+        // 2. Simpan Data ke Array
+        $data = [
+            'nama'       => $request->nama,
+            'email'      => $request->email,
+            'pertanyaan' => $request->pertanyaan,
+        ];
 
-        return view('home-question-respon', $data);
+        // 3. Redirect ke halaman respon membawa session (mencegah form resubmission)
+        return redirect()->route('question.respon')->with('dataRespon', $data);
+    }
+    public function respon()
+    {
+        // Ambil data dari session 'dataRespon'
+        $dataRespon = session('dataRespon');
+
+        // Jika halaman di-refresh langsung tanpa submit form, kembalikan ke home
+        if (!$dataRespon) {
+            return redirect()->route('question.create');
+        }
+
+        return view('home-question-respon', $dataRespon);
     }
 
     /**
