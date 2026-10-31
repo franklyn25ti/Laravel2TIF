@@ -32,15 +32,15 @@
                     @csrf
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}" placeholder="Zoro">
+                        <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}" placeholder="farhan">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="zoro@pcr.ac.id">
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="farhan@pcr.ac.id">
                     </div>
                     <div class="mb-3">
                         <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                        <textarea class="form-control" id="pertanyaan" name="pertanyaan" rows="3" placeholder="Apakah PCR memiliki program studi AI ?">{{ old('pertanyaan') }}</textarea>
+                        <textarea class="form-control" id="pertanyaan" name="pertanyaan" rows="3" placeholder="Tolong jelaskan bagaimana cara mendaftar di pcr ? ?">{{ old('pertanyaan') }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
                 </form>
