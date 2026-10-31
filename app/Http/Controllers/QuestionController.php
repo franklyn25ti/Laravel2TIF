@@ -28,8 +28,18 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        // Validation Rule & Custom Messages sesuai instruksi
+        $request->validate([
+            'nama'       => 'required|min:5',
+            'email'      => ['required', 'email'],
+            'pertanyaan' => 'required|min:10|max:300',
+        ], [
+            'nama.required'       => 'Nama tidak boleh kosong',
+            'email.email'         => 'Email Tidak valid',
+            'pertanyaan.required' => 'Pertanyaan tidak boleh kosong',
+        ]);
 
+        // Mengambil data setelah lolos validasi
         $data['nama']       = $request->nama;
         $data['email']      = $request->email;
         $data['pertanyaan'] = $request->pertanyaan;
