@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -25,19 +26,12 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function login(Request $request)
     {
-        $data = $request->validate([
-            'nama' => 'required|max:10',
-            'email' => 'required|email',
-            'pertanyaan' => 'required|max:300|min:8',
-        ]);
-
-        return redirect()
-            ->route('question.response')
-            ->with('data', $data);
+        // semua data form
+        dd($request->all());
+        
     }
-
     /**
      * Display the specified resource.
      */

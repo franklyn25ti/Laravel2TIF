@@ -7,6 +7,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 
 // Proses pengiriman form pertanyaan
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::post('/question/store', [QuestionController::class, 'store'])
     ->name('question.store');
 
@@ -35,4 +39,3 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/', function () {
     return view('welcome');
 });
-
