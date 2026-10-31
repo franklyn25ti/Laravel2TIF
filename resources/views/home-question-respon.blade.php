@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 
@@ -21,25 +20,20 @@
         <div class="card-body">
             <h5 class="card-title">Form Pertanyaan</h5>
 
-            <form action="{{route('question.store')}}" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                    <textarea class="form-control" rows="4"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
-            </form>
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" value="{{ $nama }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" value="{{ $email }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="pertanyaan" class="form-label">Pertanyaan</label>
+                <textarea class="form-control" rows="4" readonly>{{ $pertanyaan }}</textarea>
+            </div>
         </div>
     </div>
 </body>
 
 </html>
-```
