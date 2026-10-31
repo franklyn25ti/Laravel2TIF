@@ -28,7 +28,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        // 1. Validasi Data
+        // 1. Validasi Input
         $request->validate([
             'nama'       => 'required|min:5',
             'email'      => ['required', 'email'],
@@ -39,15 +39,11 @@ class QuestionController extends Controller
             'pertanyaan.required' => 'Pertanyaan tidak boleh kosong',
         ]);
 
-        // 2. Simpan Data ke Array
-        $data = [
-            'nama'       => $request->nama,
-            'email'      => $request->email,
-            'pertanyaan' => $request->pertanyaan,
-        ];
+        // 2. Buat teks pesan notifikasi Flash Data
+        $pesan = "Terimakasih {$request->nama}! Pertanyaan ini: {$request->pertanyaan} akan segera direspon melalui email {$request->email}";
 
-        // 3. Redirect ke halaman respon membawa session (mencegah form resubmission)
-        return redirect()->route('question.respon')->with('dataRespon', $data);
+        // 3. Redirect kembali ke halaman home membawa Flash Data 'info'
+        return redirect()->route('question.create')->with('info', $pesan);
     }
     public function respon()
     {
